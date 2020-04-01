@@ -1,0 +1,42 @@
+\chapter{Imperfect bifurcations}
+
+\begin{center}
+\colorbox{LightBlue}{\parbox{1\textwidth}{\noindent{\bf Note:} There is no need to repeat the information provided during the guided session. Answer the questions as concise and accurate as possible. Use graphical and/or tabular presentation rather than full sentences. The \textit{page limit} 
+for this exercise is \textit{6 printed pages}, including figures.}}
+\end{center}
+
+\begin{Exercise}[name=Gene control revisited]\label{EX21}
+
+Consider the gene control model from exercise~\ref{EX12}. 
+\Question
+Replace your sketch of the bifurcation diagram with an accurate bifurcation diagram, obtained with \texttt{COCO}.
+
+\end{Exercise}
+
+\begin{Exercise}[name=Imperfect bifurcations]\label{EX22}
+
+Consider a simplified equilibrium equation with two parameters $r$ and $h$:
+\[ - \frac{1}{\pj{3}}u^3 +ru + h = 0, \] in which $r\in [-1,1]$. \\\\
+%
+Note that the terms \emph{fold point}, \emph{limit point},
+\emph{turning point} and \emph{saddle node bifurcation} are all
+synonyms, and are used interchangeably in the literature (and \pj{in} this
+assignment).
+\Question \pj{Use \texttt{COCO} to plot the bifurcation diagram} as a function of $h$ for different values of $r$.
+For which values of $r$ can we observe turning points \pj{with respect to} $h$?
+When do we encounter a non-generic turning point?
+\Question \pj{Use \texttt{COCO} to plot the bifurcation diagram} as a function of $r$ for different values of $h$ (e.g. $h \in \{-0.1, 0, 0.1\}$).
+Identify the turning points.
+Show the connection with the disappearance of bifurcation points in 1-parameter problems under perturbation of the model. \pj{What is the meaning of the parameter $h$?}
+\Question For the 2-parameter problem, determine the fold curve (i.e., the branch of turning points).
+Draw the projection of the fold curve in the $(u,r),
+(u,h)$ and $(r,h)$ plane. Compare the latter with your previous
+analysis. %How does the fold curve evolve in the $(u,r,h)$-space?
+
+\Question The parameters of the continuation strategy in \texttt{COCO} can influence the computed results significantly. Determine the solution branch\pj{es} for $h \in \{-0.0025, -0.0005\}$, using $r$ as parameter. 
+Experiment with the parameters (continuation step length \pj{\texttt{h\_min} and \texttt{h\_max}}, maximum number of %Newton 
+iterations \pj{\texttt{ItMX}}, etc.) of the continuation
+process \pj{in \texttt{COCO}}. \pj{What is the meaning of these parameters?} When does the numerical procedure lead to wrong results? \rema{Report your findings in a table and/or some figures.}
+
+\textbf{Hint:} In \texttt{COCO}, there are two different parameters that are labeled \texttt{ItMX}. What is the meaning of these parameters? Pay attention to the difference!
+\end{Exercise}

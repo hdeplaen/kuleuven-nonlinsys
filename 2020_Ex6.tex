@@ -1,0 +1,100 @@
+\chapter{Pattern formation}
+
+\begin{center}
+\colorbox{LightBlue}{\parbox{1\textwidth}{\noindent{\bf Note:} There is no need to repeat the information provided during the guided session. Answer the questions as concise and accurate as possible. The \textit{page limit} for this exercise is \textit{4 printed pages} (\underline{including} figures).}} % I adapted the page limit, because of the abandoned theory part. It was 5 previously.
+\end{center}
+
+
+% \begin{Exercise}[name=Theory]
+% Chapter 9 of the book [Misbah]: 
+% \Question Prove that the necessary condition for the occurence of a Turing instability 
+% is given by (9.9) and that the critical wavevector $q_c$ (which is a scalar for 1D spatial problems) is given by (9.10), starting from (9.2) and (9.3). Show that you understand each step, do not just copy the book.
+% \end{Exercise}
+
+\begin{Exercise}[name=Brusselator model]
+We consider a system of two interacting species, the famous \emph{Brusselator}
+model, which exhibit Turing patterns.  The equations for a one-dimensional spatial domain are given by
+%\begin{align*}
+\begin{equation}
+%\begin{eqnarray}
+\begin{array}{ll}
+u_t &= D_u u_{xx} + f(u,v) = D_u u_{xx} + A -(B+1)u+u^2v,\\
+v_t &= D_v v_{xx} + g(u,v) = D_v v_{xx} + Bu-u^2v,
+\end{array}
+%\end{eqnarray}
+\tag{1}
+\end{equation}
+%\end{align*}
+where $D_u$ and $D_v$ are the diffusion constants of the two species $u$ and
+$v$, and $A$ and $B$ are concentrations which are kept constant by coupling
+them to a reservoir.  
+This is a \emph{activator-inhibitor} model due to the nonlinear coupling term.
+The system has a spatially uniform steady state, in which $u_0=A$, $v_0=B/A$.
+
+\noindent
+Perform a linear stability analysis of the uniform steady state:
+\Question Write the linearization of the Brusselator model around $(u_0,v_0) = (A, B/A)$, cf. section 9.3 of Chapter 9 of [Misbah]
+\Question Assume a solution of the form $(u_1, v_1) = (C_u, C_v) e^{iqx} e^{\omega t}$ and write the eigenvalue problem (9.2) for the Brusselator model 
+(note that the eigenvector is now denoted as $(C_u, C_v)^T$ instead of $(A, B)^T$ because the symbols $A$ and $B$ are already used to denote concentrations in the Brusselator model. 
+\Question Write the dispersion relation (9.4)-(9.5) specifically for the Brusselator model: show that 
+\begin{align*}
+S &= B - 1 - A^2 -q^2(D_u+D_v),\\
+P &= A^2 + q^2(A^2 D_u + (1-B) D_v)+q^4D_uD_v.
+\end{align*}
+\Question Find the error in formula (9.6). Rewrite the (correct) conditions (9.6) for the Brusselator model.
+Check whether conditions (9.12) or (9.13) can be satisfied for the Brusselator model.
+%Show that the linear evolution matrix of a Fourier
+%mode $(u,v)=(u_1,v_1)\exp(\lambda t + ikx)$ is given by 
+%\[\begin{bmatrix}
+%(B-1)-D_u k^2 & A^2 \\
+%-B & -A^2-D_v k^2
+%\end{bmatrix}\]
+%\item Calculate the eigenvalues of the linear evolution equation as a function of the wavenumber $k$.
+%Show that they are given by the following \emph{dispersion relation},
+%\begin{displaymath}
+%s_{\pm}=\frac{1}{2}(\Sigma\pm\sqrt{\Sigma^2-4\Delta}),
+%\end{displaymath}
+%where 
+%\begin{align*}
+%\Sigma &= B - 1 - A^2 -k^2(D_u+D_v),\\
+%\Delta &= A^2 + k^2(A^2 D_u + (1-B) D_v)+k^4D_uD_v.\\
+%\end{align*}
+%\item When writing $s_{\pm}=\sigma \pm i \omega$, a Turing instability occurs when $\sigma$ changes sign, and $\omega$ is zero.
+%Explain this.  
+\Question Assume that the diffusion coefficients $D_u$ and $D_v$ and the concentration $A$ are fixed.
+For very small values of $B$ the spatially uniform solution is stable.  We would like to increase $B$,
+ and are interested in the minimal value for $B$ for which the Turing instability occurs.
+Compute $B_c$, the critical value of $B$, and the corresponding critical wavenumber $q_c$.
+Show that 
+\[q_c=\left(\frac{A^2}{D_uD_v}\right)^{1/4}.\]
+and
+\[B_c=(1+A\eta)^2,\] 
+Here, $\eta=\sqrt{D_u/D_v}$.
+\Question When ignoring the diffusion term, one can easily check that the resulting system of two ordinary differential equation
+exhibits a Hopf bifurcation when $B=1+A^2$.  \pj{Show that the Turing instability sets in before the Hopf bifurcation when}
+\[\eta < \frac{\sqrt{A^2+1}-1}{A}.\]
+
+\end{Exercise}
+\begin{Exercise}[name=Numerical experiments]
+Use the Matlab-code \verb#brusselator.m# (on Toledo).\\[-.5\baselineskip]
+
+\noindent
+The Matlab-code performs time integration of the {\it two-dimensional} Brusselator model, defined on a unit square, i.e.\ Eq.(1) with $u_{xx}$ replaced by $u_{xx} + u_{yy}$ and $v_{xx}$ replaced by $v_{xx} + v_{yy}$. Periodic boundary conditions  and a random initial condition are imposed. Note that in this model the diffusion coefficients are scaled by the actual size of the physical domain, i.e. 
+$D_u = \overline{D_u}/L$ and $D_v = \overline{D_v}/L$ where $L$ is the length of each size of the physical square domain and $\overline{D_u}$ and $\overline{D_v}$ are the physical diffusion coefficients.
+
+\Question
+Start with the following values: $A=4.5$; $B=7$; $D_u = 1$; $D_v = 8$.
+Use the analytical results to check whether the conditions for a Turing instability are satisfied.
+Describe what you observe.
+\Question 
+Lower the value of $B$ so that the conditions for a Turing instability are not satisfied and the homogeneous steady state is stable.  \\
+Note that the $u$ (or $v$) values are greycoded so that black and white always correspond to the minimal and maximal values. For a correct interpretation of the values you must check the actual minimal and maximal values (Min and Max).
+\Question Reset $B=7$ and increase $L$. Describe what you observe.
+\Question Reset the diffusion coefficients and vary $B$ in the interval (6.5,9). Describe what you observe.
+
+\end{Exercise}
+
+% \begin{Exercise*}[name=Reference]
+% [Misbah] C, Misbah, \emph{Complex dynamics and morphogenesis}, Springer, 2017.
+% \end{Exercise*}
+

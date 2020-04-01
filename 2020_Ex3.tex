@@ -1,0 +1,98 @@
+\chapter{Study of a predator-prey model}
+
+\begin{center}
+\colorbox{LightBlue}{\parbox{1\textwidth}{\noindent{\bf Note:} There is no need to repeat the information provided during the guided session. Answer the questions as concise and accurate as possible. Use graphical and/or tabular presentation rather than full sentences. The \textit{page limit} 
+for this exercise is \textit{6 pages text}, \underline{not} including figures.}}
+\end{center}
+
+We consider a predator-prey model
+\begin{equation*}
+\left\{
+    \begin{aligned}
+        \dot{x} &= x (x - a) (1 - x) - b x y, \\
+        \dot{y} &= xy - cy - d,
+    \end{aligned}
+\right.
+\end{equation*}
+
+in which $a, b, c$ and $d$ are physical parameters.
+
+\begin{center}
+\colorbox{LightBlue}{\parbox{1\textwidth}{\noindent The values of the para\-meters $a$ and $b$ are fixed and given to you (see \texttt{parameters.pdf} on Toledo). Try always to stay symbolical as long as possible. The numerical values are meant for the plots and the extreme cases where an analytical solution is very hard to find.}}
+\end{center}
+
+\noindent Give a brief ecological interpretation to each term and parameter in the equations. You do not have to continue this interpretation later on in the assignment.
+
+\begin{Exercise}[name={A qualitative study without external influence}]\label{EX31}
+
+We consider the parameter $d=0$, and confine ourselves to
+parameter values $c \in [0,1.5]$.
+
+
+\Question First consider the case $y=0$.  Perform a numerical
+simulation for a number of initial values $x_0 \in [0,1.5]$ and
+describe briefly the qualitative behaviour of the system as a function of time.
+\Question For the two-dimensional problem, compute analytically the steady state solutions and determine for each steady state its stability and the topological structure of the
+phase diagram in the neighbourhood. For the equilibria in which
+$y=0$, give the slow eigendirection of the stable and unstable nodes, and determine analytically the stable and the unstable manifolds for the saddles. \rema{Report your findings in a table and/or some figures.}
+
+\textbf{Hint:} Use the trace and determinant of the Jacobian matrix \pj{or compute its the eigenvalues} to find the topological structure around an equilibrium as a function of the parameter $c$. 
+
+\textbf{Example:}
+For the equilibrium $(c,(c - a)(1-c)/b)$, the Jacobian matrix is given by
+\begin{equation} 
+J=\left[ \begin{array}{cc} 
+c(1+a-2c) &  -b c \\
+(c-a)(1-c)/b &  0 
+\end{array} \right] \nonumber
+\end{equation}
+The trace $\tau = c(1+a-2c)$ is zero if $c=0$ or $c = (1+a)/2$. The determinant $\Delta = c(c-a)(1-c)$ is zero if $c=0$, $c=a$ or $c=1$. 
+
+\Question Confirm your analysis by drawing phase diagrams for some (relevant) values of $c$. 
+Make sure your results are consistent with your analysis in item 2. What is the relation between (stable and unstable) manifolds
+of saddle points and separatrices? How can you find the separatrices using a
+combination of analytical and numerical techniques?  Determine the
+regions of attraction of the attractors. \rema{Answer with some figures.}
+
+\Question Use the results of the previous questions to give a
+qualitative overview of the changes in the phase diagram when $c$
+varies in $[0, 1.5]$. Give a qualitative picture of the evolution
+of the eigenvalues of the Jacobian in the complex plane for the
+steady state $(c,(1-c)(c-a)/b)$ as a function of the parameter $c$ and indicate which bifurcations occur.  
+
+\Question Given the interval $[c_1, c_2]$ (see Toledo): between $c_1$ and $c_2$, an important global bifurcation
+phenomenon occurs.  Monitor how the periodic solutions change as
+the parameter $c$ changes; also look at the period.  Which
+bifurcation occurs? At which value of $c$? Can you confirm the bifurcation with a scaling law for the period and/or amplitude of the limit cycles close to the bifurcation?  Draw the phase diagram
+for the critical value of $c$.
+
+\Question Compare the evolution of $x$ and $y$ as a function of time
+for
+\begin{tasks}
+\task a limit cycle corresponding to an almost harmonic
+oscillation;
+\task a limit cycle close to a heteroclinic\footnotemark{} cycle.
+\end{tasks}
+\rema{Answer with some figures and briefly discuss the qualitative difference between these two
+orbits.}
+
+\end{Exercise}\footnotetext{A \emph{heteroclinic} cycle is similar to a \emph{homoclinic} one, at the exception of having multiple centers.}
+
+\begin{Exercise}[name=Bifurcation analysis]
+
+For this part of the assignment, we confine ourselves to $c \in
+[0.1, 1.5]$. \textbf{Note:} although this assignment is shorter in text than 3.1, it is equally important (and time-consuming)!
+
+\Question Draw the bifurcation diagram for $d=0$. 
+Consider the $(x,c)$ projection.
+Discuss the branches, and discuss how the stability changes at all
+relevant bifurcation points.  Also compute the periodic solutions.
+Make sure that your bifurcation diagram is consistent with the
+phase diagrams and analysis of the first part of the assignment.
+
+\Question Draw the bifurcation diagrams for $d=0.01$ and $d=-0.01$; 
+Consider both $(x,c)$ and $(y,c)$ projections. 
+Compare the results with the bifurcation diagram for $d=0$, and indicate how the transcritical bifurcations disappear. It might be useful to extend your figures to include 
+negative values of $x$, $y$ and $c$ to see all branches.
+
+\end{Exercise}

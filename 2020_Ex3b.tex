@@ -1,0 +1,78 @@
+\titleformat{\chapter}[display]
+{}
+{\hfill \tikz[remember picture] \node[] (nr) {\bf{\fontsize{20}{70}\selectfont\color{black}ASSIGNMENT~~ \fontsize{60}{70}\selectfont\color{black}3b}};
+\begin{tikzpicture}[overlay,remember picture]
+\coordinate (rightborder) at ($(nr)+(100,0)$);
+\coordinate (right) at ($(nr.east) + (0.5,0)$);
+\draw[line width=4.5em, Blue2] (right) -- (rightborder);
+\end{tikzpicture}}
+{-1ex}
+{\filleft\fontsize{30}{50}\selectfont}
+[\vspace{-1ex}]
+    
+\chapter{Epidemic Dynamics}
+\setcounter{chapter}{3}
+
+\begin{center}
+\colorbox{LightBlue}{\parbox{1\textwidth}{\noindent{\bf Note:} There is no need to repeat the information provided during the guided session. Answer the questions as concise and accurate as possible. Use graphical and/or tabular presentation rather than full sentences. The \textit{page limit} 
+for this exercise is \textit{2 pages text}, \underline{not} including figures.}}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lipsum[1]
+
+\begin{Exercise}[name=Lorem ipsum]
+
+\lipsum[4]
+
+\Question \lipsum[6]
+
+\begin{tasks}
+
+\task First task
+
+\task Second task
+
+\task Third task
+
+\end{tasks}
+
+\Question \lipsum[7]
+
+\Question \lipsum[8]
+
+\end{Exercise}
+
+\begin{Exercise}[name=Dolor sit amet]
+
+\lipsum[10]
+
+\Question \lipsum[11]
+
+\begin{tasks}
+
+\task First task
+
+\task Second task
+
+\task Third task
+
+\end{tasks}
+
+\end{Exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\titleformat{\chapter}[display]
+{}
+{\hfill \tikz[remember picture] \node[] (nr) {\bf{\fontsize{20}{70}\selectfont\color{black}ASSIGNMENT~~ \fontsize{60}{70}\selectfont\color{black}\thechapter}};
+\begin{tikzpicture}[overlay,remember picture]
+\coordinate (rightborder) at ($(nr)+(100,0)$);
+\coordinate (right) at ($(nr.east) + (0.5,0)$);
+\draw[line width=4.5em, Blue2] (right) -- (rightborder);
+\end{tikzpicture}}
+{-1ex}
+{\filleft\fontsize{30}{50}\selectfont}
+[\vspace{-1ex}]
+\setcounter{chapter}{3}

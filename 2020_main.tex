@@ -1,0 +1,219 @@
+\documentclass[oneside,a4paper,11pt]{book}
+
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=30mm,
+ bottom=20mm,
+ }
+
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{multicol}
+\usepackage[breaklinks=true,hidelinks]{hyperref}
+%\usepackage[anythingbreaks]{breakurl}
+%\usepackage[hyphens]{url} 
+\usepackage{array}
+\usepackage{collcell}
+\newcolumntype{f}{>{\collectcell\lstinline}l<{\endcollectcell}}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{bm}
+\usepackage{xfrac}
+%\usepackage{listings}
+\usepackage[autolinebreaks,useliterate]{mcode}
+\lstset{basicstyle=\lstbasicfont\normalsize}
+\usepackage{letltxmacro}
+\newcommand*{\SavedLstInline}{}
+\LetLtxMacro\SavedLstInline\lstinline
+\DeclareRobustCommand*{\lstinline}{%
+  \ifmmode
+    \let\SavedBGroup\bgroup
+    \def\bgroup{%
+      \let\bgroup\SavedBGroup
+      \hbox\bgroup
+    }%
+  \fi
+  \SavedLstInline
+}
+
+\usepackage{float}
+\usepackage{fancybox}
+\def\figurename{\textsc{Figure}}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{ifthen}
+\newboolean{firstanswerofthechapter}
+
+\usepackage{xcolor}
+\definecolor{Blue1}{HTML}{1FABD5}
+\definecolor{Blue2}{HTML}{1D8DB0}
+\definecolor{Blue3}{HTML}{116E8A}
+\colorlet{LightBlue}{Blue2!20!white}
+
+\setlength\parindent{0pt}
+
+\usepackage{chngcntr}
+\usepackage{stackengine}
+
+\usepackage{tasks}
+\newlength{\longestlabel}
+\settowidth{\longestlabel}{\bfseries viii.}
+\settasks{label={\roman*.}, label-format={\bfseries}, label-width=\longestlabel,
+    item-indent=30pt, label-offset=2pt, column-sep={10pt}}
+    
+%% FONT
+%\usepackage{cmbright}
+\usepackage{sansmath}
+\sansmath
+%\DeclareMathVersion{sans}
+\SetSymbolFont{operators}   {sans}{OT1}{cmss} {m}{n}
+\SetSymbolFont{letters}     {sans}{OML}{cmbrm}{m}{it}
+\SetSymbolFont{symbols}     {sans}{OMS}{cmbrs}{m}{n}
+\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
+\usepackage[scaled]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+
+%\usepackage{times}
+
+
+%% EXERCISE STYLE
+\usepackage[lastexercise,answerdelayed]{exercise}
+\counterwithin{Exercise}{chapter}
+\counterwithin{Answer}{chapter}
+\renewcounter{Exercise}[chapter]
+\newcommand{\QuestionNB}{\bfseries\arabic{Question}.\ }
+\renewcommand{\ExerciseHeader}{\noindent\def\stackalignment{l}% code from https://tex.stackexchange.com/a/195118/101651
+    \stackunder[0pt]{\colorbox{Blue1}{\textcolor{white}{\textbf{\LARGE\ExerciseHeaderNB\;\large\MakeUppercase{\ExerciseName}}}}}{\textcolor{Blue2}{\rule{\linewidth}{2pt}}}\medskip}
+\renewcommand{\AnswerName}{Exercises}
+\renewcommand{\AnswerHeader}{\ifthenelse{\boolean{firstanswerofthechapter}}%
+    {\bigskip\noindent\textcolor{Blue1}{\textbf{CHAPTER \thechapter}}\newline\newline%
+        \noindent\bfseries\emph{\textcolor{Blue1}{\AnswerName\ \ExerciseHeaderNB, page %
+                \pageref{\AnswerRef}}}\smallskip}
+    {\noindent\bfseries\emph{\textcolor{Blue1}{\AnswerName\ \ExerciseHeaderNB, page \pageref{\AnswerRef}}}\smallskip}}
+\setlength{\QuestionIndent}{16pt}
+\setlength{\QuestionBefore}{1em}
+
+%% HEADER
+\usepackage{svg}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{lipsum}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+\usepackage{caption}
+
+\usepackage{pgfplots}
+\usepackage{ifthen}
+
+\usetikzlibrary{calc}
+\renewcommand{\headrulewidth}{0pt}
+
+\renewcommand{\chaptername}{Assignment}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{%
+\begin{tikzpicture}[overlay, remember picture]%
+    \fill[Blue2] (current page.north west) rectangle ($(current page.north east)+(0,-1in)$);
+    \node[anchor=north west, text=white, font=\Large, minimum size=1in, inner xsep=5mm, align=left] at (current page.north west) {\bf{NONLINEAR SYSTEMS} \\ Assignments};
+    \node[anchor=north east, minimum size=1in, inner xsep=5mm] at (current page.north east) {\includesvg[scale=1]{logo.svg}};
+      %node[minimum width=\x2-\x1, minimum height=2cm, draw, rectangle, fill=blue!20, anchor=north west, align=left, text width=\x2-\x1] at ($(current page.north west)$) {\Large\bfseries \quad #1};
+\end{tikzpicture}
+}
+\fancyfoot[CO]{
+    \begin{tikzpicture}[overlay, remember picture]%
+    \fill[Blue2] (current page.south west) rectangle ($(current page.south east)+(0,.5in)$);
+    \node[anchor=south west, text=white, font=\large, minimum size=.5in, inner xsep=5mm] at (current page.south west) {\leftmark};
+    \node[anchor=south east, text=white, font=\Large, minimum size=.5in] at (current page.south east) {\thepage};
+\end{tikzpicture}
+}
+\fancyfoot[CE]{
+    \begin{tikzpicture}[overlay, remember picture]%
+    \fill[Blue2] (current page.south west) rectangle ($(current page.south east)+(0,.5in)$);
+    \node[anchor=south west, text=white, font=\large, minimum size=.5in, inner xsep=5mm] at (current page.south west) {\leftmark};
+    \node[anchor=south east, text=white, font=\Large, minimum size=.5in] at (current page.south east) {\thepage};
+\end{tikzpicture}
+}
+\setlength{\headheight}{12pt}
+
+%% CHAPTER STYLE
+\usepackage{titlesec}
+\usepackage{tikz}
+\usetikzlibrary{calc} 
+
+\titleformat{\chapter}[display]
+{}
+{\hfill \tikz[remember picture] \node[] (nr) {\bf{\fontsize{20}{70}\selectfont\color{black}ASSIGNMENT~~ \fontsize{60}{70}\selectfont\color{black}\thechapter}};
+\begin{tikzpicture}[overlay,remember picture]
+\coordinate (rightborder) at ($(nr)+(100,0)$);
+\coordinate (right) at ($(nr.east) + (0.5,0)$);
+\draw[line width=4.5em, Blue2] (right) -- (rightborder);
+\end{tikzpicture}}
+{-1ex}
+{\filleft\fontsize{30}{50}\selectfont}
+[\vspace{-1ex}]
+
+%% TITLE
+\author{Prof. Johan Suykens \& Prof. Dirk Roose \\
+Teaching assistants: Henri De Plaen \& Thijs Steel}
+\title{Nonlinear systems 2020: assignments}
+\date{\today}
+
+%%%%% OLD
+% ----------------------------------------------------------------
+\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+% THEOREMS -------------------------------------------------------
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{alg}[thm]{Algorithm}
+\newtheorem{ex}[thm]{Example}
+%\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+%\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+%\numberwithin{equation}{section}
+% MATH -----------------------------------------------------------
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\Real}{\mathbb R}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\BX}{\mathbf{B}(X)}
+\newcommand{\A}{\mathcal{A}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\pj}[1]{\textcolor{black}{#1}}
+\usepackage{xcolor}
+\definecolor{skyblue}{RGB}{48,193,247}
+%\newcommand{\rema}[1]{\textcolor{skyblue}{\textit{#1}}}
+\newcommand{\rema}[1]{\textcolor{black}{\textit{#1}}}
+% ----------------------------------------------------------------
+\begin{document}
+\input{2020_title}
+\input{2020_overview}
+\input{2020_Ex1}
+\input{2020_Ex2}
+\input{2020_Ex3}
+\input{2020_Ex3b}
+\input{2020_Ex4}
+\input{2020_Ex5}
+\input{2020_Ex6}
+\end{document}
